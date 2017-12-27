@@ -13,11 +13,25 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content >
+  <ion-scroll scrollY="true" style="height: 100%">
   <ion-list inset>
-    <button ion-item *ngFor="let item of madyeh.body" (click)="openDetailsPage(item)">
-      <p>{{ item.split('&&')[0] }}</p>
-      <p>{{ item.split('&&')[1] }}</p>
+    <button ion-item *ngFor="let item of madyeh.body" (click)="openDetailsPage(item)" text-center>
+      {{ item.split('&&')[0] }}
+      <br/>
+      {{ item.split('&&')[1] }}
+      <hr>
     </button>
   </ion-list>
+  </ion-scroll>
+    <div padding>
+      <button ion-button icon-right round float-right (click)="openNextChapter(chapter.id)" *ngIf="true ||nextChapter">
+        التالي
+        <ion-icon name="arrow-dropright-circle"></ion-icon>
+      </button>
+      <button ion-button icon-left round float-left  (click)="openPreviousChapter(previousChapter.id)" *ngIf="true||previousChapter">
+        <ion-icon name="arrow-dropleft-circle"></ion-icon>
+        السابق
+      </button>
+    </div>
 </ion-content>

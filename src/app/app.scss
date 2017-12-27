@@ -14,3 +14,43 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+@font-face {
+  font-family: 'uthmani';
+  src: url('../assets/fonts/UthmanicHafs1.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+  font-family: uthmani;
+}
+.toolbar-background{
+  background-color: $primary;
+}
+.toolbar-title, .back-button{
+  color: $titles-color;
+}
+.scroll-content{
+  height: 90%;
+}
+.list{
+  border-radius: 10px !important;
+  background: #fff;
+}
+.item{
+  background: #fff;
+}
+.item-inner{
+  border-bottom: none !important;
+}
+.input-wrapper{
+}
+.label{
+  font-size: 7vw;
+  color: $text-color;
+  margin-top: 0px;
+}
+hr{
+  width: 90%;
+  margin-bottom: 0px;
+}

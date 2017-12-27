@@ -6,10 +6,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content >
   <ion-list inset>
-    <button ion-item *ngFor="let item of mada2h" (click)="openDetailsPage(item)">
+    <button ion-item *ngFor="let item of mada2h" (click)="openDetailsPage(item)" text-center>
       {{ item.name }}
+      <br>
+      <hr>
     </button>
   </ion-list>
 </ion-content>
