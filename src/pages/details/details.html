@@ -7,31 +7,64 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{madyeh.name}}</ion-title>
+    <ion-title *ngIf="!searchActive">{{madyeh.name}}</ion-title>
+    <ion-buttons end>
+      <button *ngIf="!searchActive && !share_list.length" class="clearBG" large (click)="activateSearch()">
+        <ion-icon name="ios-search-outline"></ion-icon>
+      </button>
+      <button class="clearBG" large (click)="shareAction(share_list)" *ngIf="share_list.length">
+        <ion-icon name="share"></ion-icon>
+      </button>
+      <ion-searchbar *ngIf="searchActive"
+                     class="customGreen"
+                     [(ngModel)]="search_text"
+                     placeholder="ابحث"
+                     [showCancelButton]="true"
+                     (ionInput)="onSearchInput($event)"
+                     (ionCancel)="onSearchCancel($event)">
+      </ion-searchbar>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content >
+<ion-content dir="rtl">
   <ion-scroll scrollY="true" style="height: 100%">
-  <ion-list inset>
-    <button ion-item *ngFor="let item of madyeh.body" (click)="openDetailsPage(item)" text-center>
-      {{ item.split('&&')[0] }}
-      <br/>
-      {{ item.split('&&')[1] }}
-      <hr>
-    </button>
-  </ion-list>
+    <ion-list inset>
+      <button ion-item *ngFor="let item of filteredData; let index = index;"
+              (click)="toggleSelection(index)" text-center
+              [ngClass]="share_list.indexOf(index) > -1 && share_list.length ? ' selected ' : ''"
+      >
+        <span class="lineIndex">{{index+1}}</span>
+        {{ item.split('&&')[0] }}
+        <br/>
+        {{ item.split('&&')[1] }}
+      </button>
+    </ion-list>
   </ion-scroll>
-    <div padding>
-      <button ion-button icon-right round float-right (click)="openNextChapter(chapter.id)" *ngIf="true ||nextChapter">
-        التالي
-        <ion-icon name="arrow-dropright-circle"></ion-icon>
+  <div padding class="clear">
+    <button ion-button icon-right round float-right (click)="openNextChapter(chapter.id)" *ngIf="true ||nextChapter">
+      التالي
+      <ion-icon name="arrow-dropright-circle"></ion-icon>
+    </button>
+    <button ion-button icon-left round float-left (click)="openPreviousChapter(previousChapter.id)"
+            *ngIf="true||previousChapter">
+      <ion-icon name="arrow-dropleft-circle"></ion-icon>
+      السابق
+    </button>
+  </div>
+  <div id="share_list" class="clear {{share_class}}">
+    <ion-list inset class="selected {{fontFaceClass}}">
+      <button ion-item *ngFor="let item of items_to_share">
+        {{ item.split('&&')[0] }}
+        <br/>
+        {{ item.split('&&')[1] }}
       </button>
-      <button ion-button icon-left round float-left  (click)="openPreviousChapter(previousChapter.id)" *ngIf="true||previousChapter">
-        <ion-icon name="arrow-dropleft-circle"></ion-icon>
-        السابق
-      </button>
+    </ion-list>
+    <div class="clear block" dir="rtl">
+      <img class="logo" src="assets/imgs/icon.png" alt="">
+      <span class="download-statement {{fontFaceClass}}"> حمل تطبيق المديح لأجهزة الأندرويد وأجعلها معك أينما كنت</span>
     </div>
+  </div>
 </ion-content>

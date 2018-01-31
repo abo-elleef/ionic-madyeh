@@ -1,6 +1,72 @@
 page-details {
+  .clear{
+    clear: both;
+  }
+  .selected {
+    background: $primary !important;
+    .item {
+      background: $primary;
+    }
+    .lineIndex, .label {
+      color: $titles-color;
+    }
+  }
+  .searchbar-md-cancel * {
+    color: $primary-dark !important;
+  }
+  #share_list .item-inner .label {
+    font-size: 70px !important;
+  }
+  .selected {
+    background: $primary !important;
+    .item {
+      background: $primary;
+      color: $titles-color;
+    }
+    .lineIndex, .label {
+      color: $titles-color;
+    }
+  }
+  .searchbar-md-cancel * {
+    color: $primary-dark !important;
+  }
+  #share_list {
+    background: $titles-color;
+    position: relative;
+    width: 900px;
+    height: auto;
+
+    .logo {
+      width: 75px;
+      margin: 15px;
+    }
+    .download-statement {
+      color: $primary;
+      position: absolute;
+      left: 20px;
+      bottom: 50px;
+      font-size: 20px;
+    }
+  }
+
+  .label {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  .item {
+    background: $titles-color;
+
+  }
+  .item-inner {
+    text-align: center;
+    border-bottom: none !important;
+    padding-bottom: 0px;
+  }
   ion-scroll {
-    .scroll-content{
+    .scroll-content {
       height: 100%;
     }
   }
