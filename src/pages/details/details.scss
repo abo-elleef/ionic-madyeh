@@ -2,6 +2,9 @@ page-details {
   .clear{
     clear: both;
   }
+  .part{
+    display: block;
+  }
   .selected {
     background: $primary !important;
     .item {
@@ -37,7 +40,7 @@ page-details {
     height: auto;
 
     .logo {
-      width: 75px;
+      width: 150px;
       margin: 15px;
     }
     .download-statement {

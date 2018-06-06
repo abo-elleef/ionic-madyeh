@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Toast} from '@ionic-native/toast';
 import {SocialSharing} from '@ionic-native/social-sharing';
 import domtoimage from 'dom-to-image';
+import { Insomnia } from '@ionic-native/insomnia';
 
 /**
  * Generated class for the DetailsPage page.
@@ -15,7 +16,7 @@ import domtoimage from 'dom-to-image';
 @Component({
   selector: 'page-details',
   templateUrl: 'details.html',
-  providers: [SocialSharing, Toast]
+  providers: [SocialSharing, Toast, Insomnia]
 })
 export class DetailsPage {
   madyeh;
@@ -30,13 +31,19 @@ export class DetailsPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private _sharer: SocialSharing,
+              private insomnia: Insomnia,
               private _toast: Toast) {
     this.madyeh = this.navParams.data.madyeh;
     this.filteredData = this.madyeh.body;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailsPage');
+    this.insomnia.keepAwake();
+  }
+
+  clearTashkeel(string){
+    if (!string) return '';
+    return string.replace(new RegExp(String.fromCharCode(1617, 124, 1614, 124, 1611, 124, 1615, 124, 1612, 124, 1616, 124, 1613, 124, 1618), "g"), "");
   }
 
   onSearchInput(event) {

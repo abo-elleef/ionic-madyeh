@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {Mada2h} from './../../mada2h';
 import {DetailsPage} from '../details/details'
+import { StatusBar } from '@ionic-native/status-bar';
 
 @Component({
   selector: 'page-home',
@@ -13,11 +14,18 @@ export class HomePage {
   search_text = '';
   searchActive= false;
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    private statusBar: StatusBar
+  ) {
     this.mada2h = Mada2h;
     this.filteredData = this.mada2h;
   }
-
+  ionViewDidLoad() {
+    // let status bar overlay webview
+    // this.statusBar.overlaysWebView(false);
+    this.statusBar.backgroundColorByHexString('#39833c');
+  }
 
   openDetailsPage(item) {
     this.navCtrl.push(DetailsPage, {
